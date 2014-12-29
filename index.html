@@ -166,7 +166,7 @@
 
                 for (index = 0; index < repos.length; index++) {
                     if ('ashwanikumar04.github.io' != repos[index].name) {
-                        output += "<li><a href='" + repos[index].html_url + "' target='_blank'>" + repos[index].name.toCustomTitleCase() + "</a></li>";
+                        output += "<li><a href='" + "http://git.ashwanik.in/"+repos[index].name + "'>" + repos[index].name.toCustomTitleCase() + "</a></li>";
                     }
                 }
                 $('#repositories').html(output);
