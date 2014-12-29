@@ -55,7 +55,6 @@
                         <li><a href="https://github.com/ashwanikumar04" target="_blank">About Me</a></li>  
                     </ul>
                 </div>
-                <div style="border-bottom: 15px double #16a085;margin-bottom:15px;">&nbsp;</div>
             </nav>
             <!-- #site-navigationnbt -->
         </header>
@@ -66,6 +65,8 @@
                 <span class='screen-reader-textnbt'>Sidebar
                 </span>
             </a>
+            <div style="border-bottom: 15px double #16a085; margin-bottom: 15px;">&nbsp;</div>
+
         </div>
         <!-- #sidebar -->
         <div class='site-contentnbt' id='contentnbt'>
@@ -80,7 +81,7 @@
                                         <span>My Repositories
                                         </span>
                                     </h2>
-                                    <div class='prettyList' style="width:500px" >
+                                    <div class='prettyList' style="width: 500px">
                                         <ul id="repositories"></ul>
                                     </div>
 
@@ -157,7 +158,7 @@
                 var output = "";
                 for (index = 0; index < data.data.length; index++) {
                     if ('ashwanikumar04.github.io' != data.data[index].name) {
-                        output += "<li><a href='" + "http://git.ashwanik.in/" + data.data[index].name + "'>" + data.data[index].name.toUpperCase() + "</a></li>";
+                        output += "<li><a href='" + data.data[index].html_url + "' target='_blank'>" + data.data[index].name.toUpperCase() + "</a></li>";
                     }
                 }
                 $('#repositories').html(output);
