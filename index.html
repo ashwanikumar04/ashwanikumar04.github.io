@@ -150,15 +150,23 @@
                 }
             });
         }
+        String.prototype.toCustomTitleCase = function () {
+    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
         $(document).ready(function () {
             genericGetDeleteAjaxHandler('http://picasaweb.google.com/data/entry/api/user/112259279669324388401?alt=json', function (data) {
                 $('#profilePic').attr("src", data.entry.gphoto$thumbnail.$t);
             }, null);
             genericGetDeleteAjaxHandler('https://api.github.com/users/ashwanikumar04/repos', function (data) {
                 var output = "";
-                for (index = 0; index < data.data.length; index++) {
-                    if ('ashwanikumar04.github.io' != data.data[index].name) {
-                        output += "<li><a href='" + data.data[index].html_url + "' target='_blank'>" + data.data[index].name.toUpperCase() + "</a></li>";
+                var repos = data.data;
+                repos = repos.sort(function (a, b) {
+                    return a.name.localeCompare(b.name);
+                });
+
+                for (index = 0; index < repos.length; index++) {
+                    if ('ashwanikumar04.github.io' != repos[index].name) {
+                        output += "<li><a href='" + repos[index].html_url + "' target='_blank'>" + repos[index].name.toCustomTitleCase() + "</a></li>";
                     }
                 }
                 $('#repositories').html(output);
