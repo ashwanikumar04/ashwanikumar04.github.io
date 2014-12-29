@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -131,48 +131,6 @@
     </div>
     <!-- #page -->
     <script type="text/javascript" src="http://www.ashwanik.in/Scripts/navigation.js"></script>
-    <script type="text/javascript">
-        function genericGetDeleteAjaxHandler(href, onSucess, onError) {
-            $.ajax({
-                type: 'GET',
-                url: href,
-                dataType: "jsonp",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if (onSucess) {
-                        onSucess(data);
-                    }
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    if (onError) {
-                        onError();
-                    }
-                }
-            });
-        }
-        String.prototype.toCustomTitleCase = function () {
-    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-};
-        $(document).ready(function () {
-            genericGetDeleteAjaxHandler('http://picasaweb.google.com/data/entry/api/user/112259279669324388401?alt=json', function (data) {
-                $('#profilePic').attr("src", data.entry.gphoto$thumbnail.$t);
-            }, null);
-            genericGetDeleteAjaxHandler('https://api.github.com/users/ashwanikumar04/repos', function (data) {
-                var output = "";
-                var repos = data.data;
-                repos = repos.sort(function (a, b) {
-                    return a.name.localeCompare(b.name);
-                });
-
-                for (index = 0; index < repos.length; index++) {
-                    if ('ashwanikumar04.github.io' != repos[index].name) {
-                        output += "<li><a href='" + "http://git.ashwanik.in/"+repos[index].name + "'>" + repos[index].name.toCustomTitleCase() + "</a></li>";
-                    }
-                }
-                $('#repositories').html(output);
-            }, null);
-        });
-
-    </script>
+    <script type="text/javascript" src="http://www.ashwanik.in/Scripts/github.js"></script>
 </body>
 </html>
